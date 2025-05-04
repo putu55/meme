@@ -1,0 +1,21 @@
+<style>
+  .price-container {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .price-marquee {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scrollPrice 10s linear infinite;
+  }
+
+  @keyframes scrollPrice {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

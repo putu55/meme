@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MemeCoin 🚀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1a1a1a;
+      font-family: 'Press Start 2P', cursive;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: #ffcc00;
+      color: #000;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #2e2e2e;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    .coin {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-buy {
+      background: #ffcc00;
+      color: #000;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-buy:hover {
+      background: #ffe066;
+    }
+
+    footer {
+      padding: 30px;
+      font-size: 0.75rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MemeCoin 🚀</h1>
+    <p>Coin paling lucu dan tak terduga di galaksi kripto 🐸🪙</p>
+  </header>
+  <main>
+    <div class="card">
+      <div class="coin">🪙</div>
+      <h2>Beli MemeCoin Sekarang!</h2>
+      <p>Dukung kekuatan meme dan komunitas. Bukan hanya coin, ini gaya hidup!</p>
+      <a href="#" class="btn-buy">Beli Sekarang</a>
+    </div>
+
+    <div class="card">
+      <h2>Kenapa MemeCoin?</h2>
+      <ul style="text-align: left; list-style: square inside;">
+        <li>🚀 Komunitas super aktif</li>
+        <li>🔥 Potensi jadi viral</li>
+        <li>💬 Meme setiap hari</li>
+        <li>🎉 Airdrop & event mingguan</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Harga Real-Time</h2>
+      <div class="price-container">
+        <div class="price-marquee">
+          <p>Bitcoin: <span id="btc">Loading...</span> | Ethereum: <span id="eth">Loading...</span> | Dogecoin: <span id="doge">Loading...</span></p>
+        </div>
+      </div>
+    </div>
+    
+      
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 MemeCoin. Semua hak tertawa dilindungi 🤣
+  </footer>
+
+  <script>
+    async function fetchPrice() {
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,dogecoin&vs_currencies=usd');
+      const data = await res.json();
+      document.getElementById('btc').textContent = '$' + data.bitcoin.usd.toLocaleString();
+      document.getElementById('eth').textContent = '$' + data.ethereum.usd.toLocaleString();
+      document.getElementById('doge').textContent = '$' + data.dogecoin.usd.toLocaleString();
+    }
+
+    fetchPrice();
+    setInterval(fetchPrice, 30000); // Update tiap 30 detik
+  </script>
+</body>
+</html>
